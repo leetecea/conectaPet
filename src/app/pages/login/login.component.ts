@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
 import { ToastrService } from 'ngx-toastr';
 import { DefaultLoginLayoutComponent } from '../../components/default-login-layout/default-login-layout.component';
+import { PrimaryInputComponent } from '../../components/primary-input/primary-input.component';
 
 interface LoginForm {
   email: FormControl,
@@ -13,7 +14,7 @@ interface LoginForm {
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [MaterialModules, ReactiveFormsModule, DefaultLoginLayoutComponent],
+  imports: [MaterialModules, ReactiveFormsModule, DefaultLoginLayoutComponent, PrimaryInputComponent],
   templateUrl: './login.component.html',
   providers: [
     LoginService
@@ -42,7 +43,7 @@ export class LoginComponent {
   }
 
   navigate(){
-    this.router.navigate(["signup"])
+    this.router.navigate(["cadastro"])
   }
   email: string = '';
   senha: string = '';
