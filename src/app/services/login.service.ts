@@ -7,11 +7,12 @@ import { LoginResponse } from '../types/login-response.type';
   providedIn: 'root'
 })
 export class LoginService {
+  apiUrl: string = "http://localhost:8080/auth/login";
 
   constructor(private httpClient: HttpClient) { }
 
-  login(name: string, password: string){
-    return this.httpClient.post<LoginResponse>("/login", { name, password }).pipe(
+  login(email: string, senha: string){
+    return this.httpClient.post<LoginResponse>(this.apiUrl, { email, senha }).pipe(
       tap((value) => {
         sessionStorage.setItem("auth-token", value.token)
         sessionStorage.setItem("username", value.name)
