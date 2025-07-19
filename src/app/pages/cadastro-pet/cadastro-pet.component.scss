@@ -62,7 +62,6 @@ form {
   label {
     margin-bottom: 10px;
     display: inline-block;
-    font-weight: 500;
   }
 
   .input-content {
@@ -153,6 +152,9 @@ form {
       font-size: 0.8rem;
       line-height: 1.4;
     }
+    span {
+        font-weight: bold;
+    }
   }
 }
 
@@ -201,7 +203,6 @@ form {
 
         .upload-title {
           font-size: 1.1rem;
-          font-weight: 600;
           color: $primary-color;
         }
 
