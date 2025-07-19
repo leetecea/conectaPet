@@ -1,7 +1,7 @@
-<div *ngIf="usuario; else visitante">
+<!-- <div *ngIf="usuario; else visitante">
   Bem-vindo, {{ usuario?.nome }} |
   <a (click)="logout()">Sair</a>
-</div>
+</div> -->
 
 <ng-template #visitante>
   <a routerLink="/login">Entrar</a> | <a routerLink="/cadastro">Cadastrar</a>

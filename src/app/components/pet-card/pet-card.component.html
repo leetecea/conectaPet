@@ -1,25 +1,61 @@
 <div class="pet-card" (click)="onCardClick()">
-  <div class="pet-image-container">
-    <img [src]="pet.imageUrls[0]" [alt]="'Foto de ' + pet.name" *ngIf="pet.imageUrls.length > 0">
+  <!-- Imagem do Pet -->
+  <div class="image-wrapper">
+    <img
+      *ngIf="pet.imageUrls.length > 0"
+      [src]="pet.imageUrls[0]"
+      [alt]="'Foto de ' + pet.name"
+    />
     <div class="no-image" *ngIf="pet.imageUrls.length === 0">
       <span>Sem foto</span>
     </div>
-    <button 
-      class="favorite-btn" 
+
+    <!-- Botão de favorito -->
+    <button
+      mat-fab
+      color="accent"
+      aria-label="Favoritar Pet"
+      class="favorite-btn"
       [class.favorited]="isFavorite"
       (click)="toggleFavorite($event)"
       type="button"
     >
-      <span class="heart-icon">{{ isFavorite ? '❤️' : '🤍' }}</span>
+      <mat-icon>
+        {{ pet.isFavorited ? 'favorite' : 'favorite_border' }}
+      </mat-icon>
     </button>
-  </div>
-  <div class="pet-info">
-    <h3 class="pet-name">{{ pet.name }}</h3>
-    <p class="pet-breed">{{ pet.breed }}</p>
-    <div class="pet-tags">
-      <span>{{ pet.age }} anos</span>
-      <span>{{ pet.size }}</span>
-      <span>Cor: {{ pet.color }}</span>
+
+    <!-- Tipo -->
+    <div class="pet-type">
+      {{ pet.species }}
     </div>
+  </div>
+
+  <!-- Informações do Pet -->
+  <div class="info-wrapper">
+    <div class="header">
+      <h3 class="pet-name">{{ pet.name }}</h3>
+      <div class="rating">
+        <mat-icon>star</mat-icon>
+        <span>4.8</span>
+      </div>
+    </div>
+
+    <p class="description">{{ pet.description }}</p>
+
+    <div class="details">
+      <div class="detail-item">
+        <mat-icon>schedule</mat-icon>
+        <span>{{ pet.age }} anos</span>
+      </div>
+      <div class="detail-item">
+        <mat-icon>pets</mat-icon>
+        <span>{{ pet.size }}</span>
+      </div>
+    </div>
+
+    <button mat-raised-button class="adopt-btn">
+      Quero Adotar
+    </button>
   </div>
 </div>

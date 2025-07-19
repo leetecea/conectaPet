@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import { HeaderComponent } from '../../components/header/header.component';
 import { Pet } from '../../types/pet.type';
 import { PetService } from '../../services/pet.service';
 import { FavoritesService } from '../../services/favorites.service';
@@ -10,7 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-pet-details',
   standalone: true,
-  imports: [CommonModule, HeaderComponent],
+  imports: [CommonModule],
   templateUrl: './pet-details.component.html',
   styleUrls: ['./pet-details.component.scss']
 })

@@ -10,6 +10,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { MatTooltip } from '@angular/material/tooltip';
 
 
 export const MaterialModules = [
@@ -25,5 +27,8 @@ export const MaterialModules = [
   MatTableModule,
   MatDialogModule,
   MatSnackBarModule,
-  MatError
+  MatError,
+  RouterModule,
+  MatTooltip,
+
 ];

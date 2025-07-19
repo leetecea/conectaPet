@@ -4,7 +4,6 @@ import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { CadastroPetComponent } from './pages/cadastro-pet/cadastro-pet.component';
 import { FeedComponent } from './pages/feed/feed.component';
 import { PetDetailsComponent } from './pages/pet-details/pet-details.component';
-import { FavoritesComponent } from './pages/favorites/favorites.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 
 export const routes: Routes = [
@@ -32,10 +31,6 @@ export const routes: Routes = [
     {
         path: "pet/:id",
         component: PetDetailsComponent
-    },
-    {
-        path: "favorites",
-        component: FavoritesComponent
     },
     {
         path: "profile",

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { HeaderComponent } from '../../components/header/header.component';
 import { PrimaryInputComponent } from '../../components/primary-input/primary-input.component';
 import { UserProfile } from '../../types/user.type';
 import { UserService } from '../../services/user.service';
@@ -17,7 +16,7 @@ interface ProfileForm {
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, HeaderComponent, PrimaryInputComponent],
+  imports: [CommonModule, ReactiveFormsModule, PrimaryInputComponent],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })

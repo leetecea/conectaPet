@@ -9,6 +9,7 @@ export interface Pet {
   species: string;      // Mapeado de 'tipoAnimal'
   breed: string;        // Mapeado de 'raca'
   age: number;          // Mapeado de 'idade'
+  isFavorited: boolean; // Mapeado de 'favorito', usado para controle de favoritos
   size: PetSize;        // Mapeado de 'porte'
   color: string;        // Mapeado de 'cor'
   description: string;  // Mapeado de 'descricao'

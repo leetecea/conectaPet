@@ -1,12 +1,4 @@
-<app-default-login-layout
-    layoutMode="centered"
-    title="Cadastrar Novo Pet"
-    primaryBtnText="Cadastrar Pet"
-    secondaryBtnText="Voltar ao Feed"
-    (submit)="submit()"
-    (navigate)="navigate()"
-    [disablePrimaryBtn]="!petForm.valid"
->
+<div class="pet-form">
   <form [formGroup]="petForm">
     <div class="form-section">
       <h3 class="section-title">
@@ -164,4 +156,26 @@
       </div>
     </div>
   </form>
-</app-default-login-layout>
+  <div class="form-actions">
+    <app-primary-button
+      action="enviar"
+      label="Enviar"
+      type="submit"
+      (clicked)="submit()"
+    ></app-primary-button>
+
+    <app-primary-button
+      action="voltar"
+      label="Voltar"
+      (clicked)="navigateToFeed()"
+    ></app-primary-button>
+
+    <app-primary-button
+      action="limpar"
+      label="Limpar"
+      type="reset"
+      (clicked)="resetForm()"
+    ></app-primary-button>
+
+  </div>
+</div>

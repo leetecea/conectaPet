@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { DefaultLoginLayoutComponent } from '../../components/default-login-layout/default-login-layout.component';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PrimaryInputComponent } from '../../components/primary-input/primary-input.component';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
+import { PrimaryButtonComponent } from '../../components/primary-button/primary-button.component';
 
 interface PetForm {
   nome: FormControl<string | null>;
@@ -23,8 +23,9 @@ interface PetForm {
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    DefaultLoginLayoutComponent,
-    PrimaryInputComponent
+    PrimaryInputComponent,
+    PrimaryButtonComponent
+
   ],
   templateUrl: './cadastro-pet.component.html',
   styleUrls: ['./cadastro-pet.component.scss']
@@ -132,7 +133,14 @@ export class CadastroPetComponent {
     });
   }
 
-  navigate() {
+  navigateToFeed() {
     this.router.navigate(['/feed']);
   }
+
+  resetForm() {
+    this.petForm.reset();
+    this.previewUrls = [];
+    this.toastr.info('Formulário limpo!');
+  }
+
 }
