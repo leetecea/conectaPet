@@ -6,11 +6,12 @@ import { Router } from '@angular/router';
 import { MatIcon } from '@angular/material/icon';
 import {MatChipsModule} from '@angular/material/chips';
 import { MatCard, MatCardModule } from '@angular/material/card';
+import { SecundaryButtonComponent } from '../secundary-button/secundary-button.component';
 
 @Component({
   selector: 'app-pet-card',
   standalone: true,
-  imports: [CommonModule, MatIcon, MatChipsModule, MatCardModule],
+  imports: [CommonModule, MatIcon, MatChipsModule, MatCardModule, SecundaryButtonComponent],
   templateUrl: './pet-card.component.html',
   styleUrls: ['./pet-card.component.scss']
 })

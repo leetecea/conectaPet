@@ -5,14 +5,17 @@ import { PrimaryInputComponent } from '../../components/primary-input/primary-in
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
 import { ToastrService } from 'ngx-toastr';
+import { MatIcon } from '@angular/material/icon';
+import { SecundaryButtonComponent } from '../../components/secundary-button/secundary-button.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [
-    DefaultLoginLayoutComponent,
     ReactiveFormsModule,
-    PrimaryInputComponent
+    PrimaryInputComponent,
+    SecundaryButtonComponent,
+    MatIcon
   ],
   providers: [
     LoginService

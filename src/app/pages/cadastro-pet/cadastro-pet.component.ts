@@ -25,7 +25,6 @@ interface PetForm {
     ReactiveFormsModule,
     PrimaryInputComponent,
     PrimaryButtonComponent
-
   ],
   templateUrl: './cadastro-pet.component.html',
   styleUrls: ['./cadastro-pet.component.scss']
