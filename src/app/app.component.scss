@@ -5,3 +5,23 @@
   justify-content: center;
   height: 100vh;
 }
+
+.app-toolbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.logo {
+  width: 1.5em;
+  height: 2em;
+}
+
+.logo-container {
+  margin-left: .5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+}
