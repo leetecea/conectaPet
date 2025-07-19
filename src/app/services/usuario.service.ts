@@ -37,7 +37,6 @@ export class UsuarioService {
 
     if (error.status === 401) {
       errorMessage = 'Sessão expirada. Faça login novamente.';
-      // Você pode redirecionar para a página de login aqui
     } else if (error.status === 403) {
       errorMessage = 'Você não tem permissão para acessar este recurso';
     } else if (error.status === 404) {

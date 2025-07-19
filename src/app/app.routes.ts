@@ -8,7 +8,6 @@ import { CadastroPetComponent } from './pages/cadastro-pet/cadastro-pet.componen
 import { FeedComponent } from './pages/feed/feed.component';
 
 export const routes: Routes = [
-    // Rota padrão agora é o feed
     {
         path: '',
         redirectTo: 'feed',
@@ -26,12 +25,10 @@ export const routes: Routes = [
         path: "cadastro-pet",
         component: CadastroPetComponent
     },
-    // Nova rota do feed
     {
         path: "feed",
         component: FeedComponent
     },
-    // Redireciona qualquer rota não encontrada para o feed
     {
         path: '**',
         redirectTo: 'feed'

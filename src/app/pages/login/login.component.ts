@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DefaultLoginLayoutComponent } from '../../components/default-login-layout/default-login-layout.component';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PrimaryInputComponent } from '../../components/primary-input/primary-input.component';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
@@ -38,7 +38,7 @@ export class LoginComponent {
     if (this.loginForm.valid) {
         this.loginService.login(this.loginForm.value.email as string, this.loginForm.value.password as string).subscribe({
             next: () => this.router.navigate(["feed"]),
-            error: (errerr) => {
+            error: (err) => {
         {
                 console.error("Erro no login do Angular:", err);
                 this.toast.error("Email ou senha incorretos!");
