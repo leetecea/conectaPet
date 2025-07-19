@@ -34,16 +34,29 @@ export class LoginComponent {
     })
   }
 
-  submit(){
-    this.loginService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe({
-      next: () => this.router.navigate(["feed"]),
-      error: (err) => {
-        this.toast.error("Email ou senha incorretos!");
-      }
-    })
-  }
+ submit(){
+    if (this.loginForm.valid) {
+        this.loginService.login(this.loginForm.value.email as string, this.loginForm.value.password as string).subscribe({
+            next: () => this.router.navigate(["feed"]),
+            error: (errerr) => {
+        {
+                console.error("Erro no login do Angular:", err);
+                this.toast.error("Email ou senha incorretos!");
+      };
+            }
+        })
+    } else {
+        console.warn('Formulário inválido. Não enviando.');
+    }
+}
 
   navigate(){
     this.router.navigate(["cadastro"])
   }
+
+  resetForm(form: NgForm) {
+    form.resetForm();
+  }
+
+
 }
