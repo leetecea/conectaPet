@@ -10,7 +10,8 @@
       <span class="nav-link logo-text">ConectaPet</span>
     </div>
 
-    <nav class="navbar" *ngIf="isLoggedIn">
+    <nav class="navbar">
+      <!-- *ngIf="isLoggedIn" -->
       <div class="nav-links">
         <div class="nav-center">
           <a routerLink="/feed" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">
