@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { UserProfile } from '../types/user.type';
 
 @Injectable({
@@ -12,21 +12,18 @@ export class UserService {
   public currentUser$ = this.currentUserSubject.asObservable();
 
   constructor(private http: HttpClient) {
-    this.loadCurrentUser();
+    this.loadCurrentUserFromToken();
   }
 
-  private loadCurrentUser(): void {
-    // Mock user data - em produção viria do backend
-    const mockUser: UserProfile = {
-      id: 1,
-      name: 'João Silva',
-      email: 'joao@email.com',
-      userType: 'adotante',
-      createdAt: new Date(),
-      favoritesPets: [],
-      adoptedPets: []
-    };
-    this.currentUserSubject.next(mockUser);
+  private loadCurrentUserFromToken(): void {
+    const token = sessionStorage.getItem('auth-token');
+    if (token) {
+      this.http.get<UserProfile>(`${this.apiUrl}/profile`)
+        .subscribe({
+          next: (user) => this.currentUserSubject.next(user),
+          error: () => this.currentUserSubject.next(null)
+        });
+    }
   }
 
   getCurrentUser(): UserProfile | null {
@@ -34,13 +31,10 @@ export class UserService {
   }
 
   updateProfile(userData: Partial<UserProfile>): Observable<UserProfile | null> {
-    // Mock implementation - em produção faria requisição HTTP
-    const current = this.currentUserSubject.value;
-    if (current) {
-      const updated = { ...current, ...userData };
-      this.currentUserSubject.next(updated);
-    }
-    return this.currentUser$;
+    return this.http.put<UserProfile>(`${this.apiUrl}/profile`, userData)
+      .pipe(
+        tap((updatedUser: UserProfile) => this.currentUserSubject.next(updatedUser))
+      );
   }
 
   getUserById(id: number): Observable<UserProfile> {

@@ -7,6 +7,8 @@ export interface User {
   description?: string;
   createdAt: Date;
   profileImage?: string;
+  token: string;
+  message: string;
 }
 
 export interface UserProfile extends User {

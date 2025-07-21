@@ -40,17 +40,19 @@ export class PetService {
   constructor(private http: HttpClient) {}
 
   getAllPets(): Observable<Pet[]> {
-    // Em produção: return this.http.get<Pet[]>(this.apiUrl);
-    return of(this.mockPets);
+    return this.http.get<Pet[]>(this.apiUrl);
   }
 
-  getPetById(id: number): Observable<Pet | undefined> {
-    // Em produção: return this.http.get<Pet>(`${this.apiUrl}/${id}`);
-    return of(this.mockPets.find(pet => pet.id === id));
+  getPetById(id: number): Observable<Pet> {
+    return this.http.get<Pet>(`${this.apiUrl}/${id}`);
   }
 
   getFavoritesPets(favoriteIds: number[]): Observable<Pet[]> {
-    const favorites = this.mockPets.filter(pet => favoriteIds.includes(pet.id));
-    return of(favorites);
+    const params = favoriteIds.join(',');
+    return this.http.get<Pet[]>(`${this.apiUrl}/favorites?ids=${params}`);
+  }
+
+  createPet(petData: Pet): Observable<Pet> {
+    return this.http.post<Pet>(this.apiUrl, petData);
   }
 }
