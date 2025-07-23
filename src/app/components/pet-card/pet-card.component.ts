@@ -1,12 +1,12 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Pet } from '../../types/pet.type';
 import { CommonModule } from '@angular/common';
-import { FavoritesService } from '../../services/favorites.service';
 import { Router } from '@angular/router';
 import { MatIcon } from '@angular/material/icon';
 import {MatChipsModule} from '@angular/material/chips';
 import { MatCard, MatCardModule } from '@angular/material/card';
 import { SecundaryButtonComponent } from '../secundary-button/secundary-button.component';
+import { FavoriteService } from '../../services/favorite.service';
 
 @Component({
   selector: 'app-pet-card',
@@ -20,26 +20,23 @@ export class PetCardComponent {
   @Output() favoriteToggled = new EventEmitter<{ petId: number, isFavorite: boolean }>();
 
   constructor(
-    private favoritesService: FavoritesService,
+    private favoriteService: FavoriteService,
     private router: Router
   ) {}
 
   get isFavorite(): boolean {
-    return this.favoritesService.isFavorite(this.pet.id);
+    return this.favoriteService.isFavorite(this.pet.id);
   }
 
   toggleFavorite(event: Event): void {
     event.stopPropagation();
 
-    if (this.isFavorite) {
-      this.favoritesService.removeFromFavorites(this.pet.id);
-    } else {
-      this.favoritesService.addToFavorites(this.pet.id);
-    }
+    const currentlyFavorite = this.isFavorite;
+    this.favoriteService.toggleFavorite(this.pet.id);
 
     this.favoriteToggled.emit({
       petId: this.pet.id,
-      isFavorite: !this.isFavorite
+      isFavorite: !currentlyFavorite
     });
   }
 

@@ -14,10 +14,10 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent {
   title = 'conectaPet';
-   isLoggedIn = false;
+  isLoggedIn = false;
 
   constructor(private authService: AuthService) {
-    this.authService.authStatus.subscribe(status => {
+    this.authService.isAuthenticated$.subscribe(status => {
       this.isLoggedIn = status;
     });
   }

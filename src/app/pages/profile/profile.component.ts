@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { PrimaryInputComponent } from '../../components/primary-input/primary-input.component';
 import { UserProfile } from '../../types/user.type';
 import { UserService } from '../../services/user.service';
 import { ToastrService } from 'ngx-toastr';
+import { PrimaryInputComponent } from '../../components/primary-input/primary-input.component';
 
 interface ProfileForm {
   name: FormControl<string | null>;
