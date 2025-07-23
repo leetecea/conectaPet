@@ -21,8 +21,8 @@ form {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 
   &.photo-section {
-    border-color: $primary-color;
-    background: lighten($primary-color, 48%);
+    border-color: $green-color;
+    background: lighten($green-color, 48%);
   }
 
   .section-title {
@@ -34,7 +34,7 @@ form {
     font-weight: 600;
     margin: 0 0 1.5rem 0;
     padding-bottom: 0.75rem;
-    border-bottom: 2px solid $primary-color;
+    border-bottom: 2px solid $green-color;
 
     .section-icon {
       font-size: 1.5rem;
@@ -84,7 +84,7 @@ form {
         cursor: pointer;
 
         &:focus {
-          outline: 2px solid $primary-color;
+          outline: 2px solid $green-color;
         }
 
         option {
@@ -127,7 +127,7 @@ form {
         line-height: 1.5;
 
         &:focus {
-          outline: 2px solid $primary-color;
+          outline: 2px solid $green-color;
         }
       }
 
@@ -167,7 +167,7 @@ form {
   .upload-label {
     display: block;
     cursor: pointer;
-    border: 2px dashed $primary-color;
+    border: 2px dashed $green-color;
     border-radius: 12px;
     padding: 2rem;
     text-align: center;
@@ -175,7 +175,7 @@ form {
     background: rgba(255, 255, 255, 0.5);
 
     &:hover {
-      border-color: darken($primary-color, 10%);
+      border-color: darken($green-color, 10%);
       background: rgba(255, 255, 255, 0.8);
       transform: translateY(-2px);
     }
@@ -203,7 +203,7 @@ form {
 
         .upload-title {
           font-size: 1.1rem;
-          color: $primary-color;
+          color: $green-color;
         }
 
         small {
@@ -241,7 +241,7 @@ form {
     transition: all 0.3s ease;
 
     &:hover {
-      border-color: $primary-color;
+      border-color: $green-color;
       transform: translateY(-2px);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
@@ -311,8 +311,8 @@ form {
     display: flex;
     align-items: flex-start;
     gap: 1rem;
-    background: lighten($primary-color, 45%);
-    border: 1px solid lighten($primary-color, 35%);
+    background: lighten($green-color, 45%);
+    border: 1px solid lighten($green-color, 35%);
     border-radius: 8px;
     padding: 1rem;
 
@@ -323,7 +323,7 @@ form {
 
     .info-content {
       strong {
-        color: $primary-color;
+        color: $green-color;
         font-weight: 600;
       }
 

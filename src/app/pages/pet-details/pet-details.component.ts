@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Pet } from '../../types/pet.type';
 import { PetService } from '../../services/pet.service';
-import { FavoritesService } from '../../services/favorites.service';
 import { ToastrService } from 'ngx-toastr';
+import { FavoriteService } from '../../services/favorite.service';
 
 @Component({
   selector: 'app-pet-details',
@@ -20,7 +20,7 @@ export class PetDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private petService: PetService,
-    private favoritesService: FavoritesService,
+    private favoriteService: FavoriteService,
     private toastr: ToastrService
   ) {}
 
@@ -51,18 +51,18 @@ export class PetDetailsComponent implements OnInit {
   }
 
   get isFavorite(): boolean {
-    return this.pet ? this.favoritesService.isFavorite(this.pet.id) : false;
+    return this.pet ? this.favoriteService.isFavorite(this.pet.id) : false;
   }
 
   toggleFavorite(): void {
     if (!this.pet) return;
 
-    if (this.isFavorite) {
-      this.favoritesService.removeFromFavorites(this.pet.id);
-      this.toastr.success(`${this.pet.name} removido dos favoritos`);
-    } else {
-      this.favoritesService.addToFavorites(this.pet.id);
-      this.toastr.success(`${this.pet.name} adicionado aos favoritos`);
-    }
+    const wasFavorite = this.isFavorite;
+
+    this.favoriteService.toggleFavorite(this.pet.id);
+    const action = wasFavorite ? 'removido dos' : 'adicionado aos';
+    const message = `${this.pet.name} ${action} favoritos`;
+
+    this.toastr.success(message);
   }
 }

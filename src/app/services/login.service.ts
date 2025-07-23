@@ -29,9 +29,7 @@ export class LoginService {
         this.authService.login();
 
         const decodedToken: any = jwtDecode(usuario.token);
-        if (decodedToken && decodedToken.role) {
-          sessionStorage.setItem("user-role", decodedToken.role);
-        }
+        localStorage.setItem('usuarioId', decodedToken.sub);
       })
     )
   }
@@ -46,9 +44,15 @@ export class LoginService {
     )
   }
 
+  logout() {
+    sessionStorage.clear();
+    localStorage.removeItem('usuarioId');
+    this.authService.logout();
+  }
+
   getUsuarioId(): number | null {
     const id = localStorage.getItem('usuarioId');
-    return id ? +id : null;
+    return id && !isNaN(+id) ? +id : null;
   }
 
   getUserRole(): string | null {

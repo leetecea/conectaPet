@@ -23,8 +23,8 @@ export class AuthService {
   logout(): void {
     sessionStorage.removeItem('auth-token');
     sessionStorage.removeItem('username');
-    this.router.navigate(['/login']);
     this._isAuthenticated.next(false);
+    this.router.navigate(['/login']);
   }
 
   isAuthenticated(): boolean {

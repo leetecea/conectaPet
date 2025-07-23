@@ -10,7 +10,8 @@
           <h1>ConectaPet</h1>
           <p>Entre na sua conta</p>
         </div>
-          <form [formGroup]="loginForm">
+        <form [formGroup]="isRegistering ? registerForm : loginForm">
+           @if (!isRegistering) {
             <app-primary-input
               formControlName="email"
               inputName="email"
@@ -31,13 +32,19 @@
             </app-primary-input>
 
             <span class="forgot-password">Esqueceu a senha?</span>
-          </form>
-          <app-secundary-button
-            label="Entrar"
-            (click)="submit()"/>
+            <app-secundary-button label="Entrar" (click)="submitLogin()" />
             <span class="register-link">
-              Não tem uma conta? <a routerLink="/register">Cadastre-se</a>
+              Não tem uma conta?
+              <a (click)="switchToRegister()" class="link">Cadastre-se</a>
             </span>
+          } @else {
+
+            <app-cadastro
+              (cadastrar)="submitRegister($event)"
+              (voltarParaLogin)="switchToLogin()"/>
+
+          }
+        </form>
       </div>
     </div>
 
@@ -46,7 +53,10 @@
       <div class="illustration-box">
         <img src="/assets/svg/cat-dog-illustration.svg" alt="Ilustração pet" />
         <h2>Adote um amigo. Mude uma vida!</h2>
-        <p>Conecte-se com pets que precisam de um lar e encontre seu novo melhor amigo.</p>
+        <p>
+          Conecte-se com pets que precisam de um lar e encontre seu novo melhor
+          amigo.
+        </p>
       </div>
     </div>
   </div>
